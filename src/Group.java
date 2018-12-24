@@ -1,7 +1,16 @@
+import java.util.LinkedList;
+
 public class Group {
-    Student nikolas = new Student("name", "surname", 21);
-    //nikolas.getName(); // вот тут не работает, почему?
 
+    LinkedList<Student> studentLinkedList = new LinkedList<>();
 
+    public void addStudent(Student student) {
+        studentLinkedList.add(student);
+
+    }
+
+    public void seeStudents() {
+        studentLinkedList.forEach(System.out::println);
+    }
 }
 

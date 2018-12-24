@@ -3,6 +3,8 @@ import java.util.LinkedList;
 public class Group {
 
     private LinkedList<Student> studentLinkedList = new LinkedList<>();
+    private Student starosta;
+
 
     public void addStudent(Student student) {
         studentLinkedList.add(student);
@@ -13,15 +15,18 @@ public class Group {
     }
 
     void maxSumSkills() {
+
         double max = 0.0;
-        for (int i = 0; i < studentLinkedList.size(); i++) {
-            for (int j = 0; j < studentLinkedList.size(); j++) {
-                if (studentLinkedList.get(i).getSumSkills() > studentLinkedList.get(j).getSumSkills()) {
-                    max = studentLinkedList.get(i).getSumSkills();
-                } else max = studentLinkedList.get(j).getSumSkills();
+
+        for (Student element : studentLinkedList) {
+            double temp = element.getSumSkills();
+            if (temp > max) {
+                max = temp;
+                starosta = element;
             }
+
         }
-        System.out.println(max);
+        System.out.println(starosta);
     }
 }
 

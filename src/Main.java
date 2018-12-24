@@ -2,12 +2,14 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Student ivan = new Student("Ivan","Ivanow", 21);
-        Student alex = new Student();
-        alex.setName("Alexa");
-        alex.setAge(22);
 
+        Group group = new Group();
+        group.addStudent(new Student("Ivan", 19, "Ivanov"));
+        group.addStudent(new Student("Konstantin", 22, "Shustrov"));
+        group.addStudent(new Student("Alex", 23, "Shelby"));
 
+        group.seeStudents();
 
     }
+
 }

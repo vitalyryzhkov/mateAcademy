@@ -1,21 +1,20 @@
 import java.util.LinkedList;
 
-public class Group {
+class Group {
 
     private LinkedList<Student> studentLinkedList = new LinkedList<>();
     private Student starosta;
 
 
-    public void addStudent(Student student) {
+    void addStudent(Student student) {
         studentLinkedList.add(student);
     }
 
-    public void seeStudents() {
+    void seeStudents() {
         studentLinkedList.forEach(System.out::println);
     }
 
     void maxSumSkills() {
-
         double max = 0.0;
 
         for (Student element : studentLinkedList) {
@@ -24,9 +23,8 @@ public class Group {
                 max = temp;
                 starosta = element;
             }
-
         }
-        System.out.println(starosta);
+        System.out.println("Starosta groupe: " + starosta.getName() + " " + starosta.getSurname());
     }
 }
 

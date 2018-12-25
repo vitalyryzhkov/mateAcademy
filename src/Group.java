@@ -2,29 +2,35 @@ import java.util.LinkedList;
 
 class Group {
 
-    private LinkedList<Student> studentLinkedList = new LinkedList<>();
-    private Student starosta;
+    private static LinkedList<Student> studentList = new LinkedList<>(); // создаем список студентов
+    private Student headman; // экземпляр студентра, которому будет присвоено значение старосты
 
+    LinkedList<Student> getStudentList() {
+        return studentList;
+    }
 
     void addStudent(Student student) {
-        studentLinkedList.add(student);
+        getStudentList().add(student);
+    } // метод, для добавления студентов в список
+
+    void viewStudents() { // вывод студентов в консоль
+        getStudentList().forEach(System.out::println);
     }
 
-    void seeStudents() {
-        studentLinkedList.forEach(System.out::println);
-    }
 
-    void maxSumSkills() {
+    void whoIsHeadman() { // выбор старосты, происходит путем определения студента с наибольшим значением суммы всех "скилов"
         double max = 0.0;
 
-        for (Student element : studentLinkedList) {
-            double temp = element.getSumSkills();
+        for (Student student : getStudentList()) {
+            double temp = student.getSumSkills();
             if (temp > max) {
                 max = temp;
-                starosta = element;
+                headman = student;
             }
         }
-        System.out.println("Starosta groupe: " + starosta.getName() + " " + starosta.getSurname());
+        System.out.println("!-----!" + "\n" +
+                headman.getName() + " " + headman.getSurname() + " выбран старостой!" + "\n" +
+                "!-----!");
     }
 }
 

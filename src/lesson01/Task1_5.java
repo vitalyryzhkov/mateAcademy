@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Task1_5 {
     public static void main(String[] args) {
-        int[] arr = testArr(1_000_000);
+        int[] arr = fillArray(1_000_000);
         long startSort = System.currentTimeMillis();
 //        bubbleSort(arr);
 //        insertionSort(arr);
@@ -135,7 +135,7 @@ public class Task1_5 {
         }
     }
 
-    private static int[] testArr(int size) {
+    private static int[] fillArray(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = new Random().nextInt(1000);

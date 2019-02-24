@@ -22,11 +22,11 @@ public class Task1 {
     }
 
     private int testEquals(int score1, int score2, int userScore1, int userScore2) {
-        return (userScore1 == score1) && (userScore2 == score2) ? 2 : (((score1 > score2)|| score1 < score2) &&
-                ((userScore1 > userScore2) || userScore1 < userScore2) ? 1 : 0);
+        return (userScore1 == score1) && (userScore2 == score2) ? 2 : (((score1 > score2) && userScore1 > userScore2) ||
+                ((score1 < score2) && userScore1 < userScore2) ? 1 : 0);
     }
 
-    private int testInt() {
+    int testInt() {
         Scanner scanner = new Scanner(System.in);
         int number = -1;
         while (scanner.hasNext()) {

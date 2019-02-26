@@ -6,7 +6,7 @@ public class City {
     private String name;
     private int population;
 
-    public City() {
+    private City() {
     }
 
     public String getName() {
@@ -17,25 +17,32 @@ public class City {
         return population;
     }
 
-    public static class Builder {
-        private City newCity;
+    public static Builder newBuilder() {
+        return new City().new Builder();
+    }
 
-        public Builder() {
-            newCity = new City();
+    public class Builder {
+//        private City newCity;
+
+        private Builder() {
+//            newCity = new City();
         }
 
         public Builder withName(String name) {
-            newCity.name = name;
+            City.this.name = name;
             return this;
         }
 
         public Builder withPopulation(int population) {
-            newCity.population = population;
+            City.this.population = population;
             return this;
         }
 
         public City build() {
-            return newCity;
+            City city = new City();
+            city.name = City.this.name;
+            city.population = City.this.population;
+            return city;
         }
     }
 

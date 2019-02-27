@@ -20,7 +20,11 @@
 *.zip
 *.tar.gz
 *.rar
+*.iml
+.idea
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
+out/production/mateAcademy/META-INF/
+out/production/mateAcademy/lesson02/.gitignore

@@ -1,22 +1,22 @@
-package lesson02.task2_3;
+package lesson02.newsort;
 
 import java.util.Arrays;
 import java.util.Random;
 
-public class Main {
+public class SortUtil {
     public static void main(String[] args) {
         int[] arr = fillArray(1_00);
-        System.out.println(Arrays.toString(quickSort(arr)));
+        System.out.println(Arrays.toString(bubbleSort(arr)));
     }
 
 
-    private static int[] mergeSort(int[] array) {
+    public static int[] mergeSort(int[] array) {
         int[] arr = Arrays.copyOf(array, array.length);
         mergesort(arr, 0, arr.length - 1);
         return arr;
     }
 
-    private static void mergesort(int[] arr, int low, int high) {
+    public static void mergesort(int[] arr, int low, int high) {
         if (low < high) {
             int middle = low + (high - low) / 2;
             mergesort(arr, low, middle);
@@ -48,7 +48,7 @@ public class Main {
         }
     }
 
-    private static int[] fillArray(int size) {
+    public static int[] fillArray(int size) {
         int[] arr = new int[size];
         for (int i = 0; i < size; i++) {
             arr[i] = new Random().nextInt(1000);
@@ -56,30 +56,26 @@ public class Main {
         return arr;
     }
 
-    private static int[] bubbleSort(int[] arr) {
+    public static int[] bubbleSort(int[] arr) {
         int[] newArr = Arrays.copyOf(arr, arr.length);
         int len = newArr.length;
         for (int j = 0; j < len; j++) {
             for (int i = 1; i < len - j; i++) {
                 if (newArr[i] < newArr[i - 1]) {
-                    int tmp = newArr[i - 1];
-                    newArr[i - 1] = newArr[i];
-                    newArr[i] = tmp;
+                    swap(newArr, i - 1, i);
                 }
             }
         }
         return newArr;
     }
 
-    private static int[] insertionSort(int[] array) {
+    public static int[] insertionSort(int[] array) {
         int[] arr = Arrays.copyOf(array, array.length);
 
         for (int i = 1; i < arr.length; i++) {
             for (int j = i - 1; j >= 0; j--) {
                 if (arr[i] < arr[j]) {
-                    int old = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = old;
+                    swap(arr, i, j);
                     i--;
                 }
             }
@@ -87,25 +83,23 @@ public class Main {
         return arr;
     }
 
-    private static int[] selectionSort(int[] array) {
+    public static int[] selectionSort(int[] array) {
         int[] arr = Arrays.copyOf(array, array.length);
         for (int i = 0; i < arr.length; i++) {
             int min = arr[i];
-            int min_index = i;
+            int minIndex = i;
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < min) {
                     min = arr[j];
-                    min_index = j;
+                    minIndex = j;
                 }
             }
-            int temp = arr[i];
-            arr[i] = arr[min_index];
-            arr[min_index] = temp;
+            swap(arr, i, minIndex);
         }
         return arr;
     }
 
-    private static int[] quickSort(int[] array) {
+    public static int[] quickSort(int[] array) {
         int[] arr = Arrays.copyOf(array, array.length);
         int first = 0;
         int last = arr.length - 1;
@@ -113,7 +107,7 @@ public class Main {
         return arr;
     }
 
-    private static void sort(int[] arr, int first, int last) {
+    public static void sort(int[] arr, int first, int last) {
         int firstValue = first;
         int lastValue = last;
         int middle = arr[(first + last) / 2];
@@ -143,5 +137,11 @@ public class Main {
         if (lastValue > first) {
             sort(arr, first, lastValue);
         }
+    }
+
+    private static void swap(int[] arr, int leftValue, int rightValue) {
+        int tmp = arr[leftValue];
+        arr[leftValue] = arr[rightValue];
+        arr[rightValue] = tmp;
     }
 }

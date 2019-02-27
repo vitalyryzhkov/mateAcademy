@@ -1,4 +1,4 @@
-package lesson02.task2_2;
+package lesson02.innerclasses;
 
 public class Anonymous {
     public static void main(String[] args) {

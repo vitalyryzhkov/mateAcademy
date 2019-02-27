@@ -1,6 +1,6 @@
-package lesson02.task2_1;
+package lesson02.builder;
 
-public class Main {
+public class Builder {
     public static void main(String[] args) {
         City city = City.newBuilder()
                 .withName("Kyiv")

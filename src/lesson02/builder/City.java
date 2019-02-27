@@ -1,6 +1,4 @@
-package lesson02.task2_1;
-
-import test.Person;
+package lesson02.builder;
 
 public class City {
     private String name;

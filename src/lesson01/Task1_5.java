@@ -5,30 +5,77 @@ import java.util.Random;
 
 public class Task1_5 {
     public static void main(String[] args) {
-        int[] arr = fillArray(1_000_000);
-        long startSort = System.currentTimeMillis();
+        int[] arr = fillArray(1_00);
+//        long startSort = System.currentTimeMillis();
 //        bubbleSort(arr);
 //        insertionSort(arr);
 //        selectionSort(arr);
 //        quickSort(arr);
 //        mergeSort(arr);
-        long finishSort = System.currentTimeMillis() - startSort;
-        System.out.println(Arrays.toString(arr));
-        System.out.println(finishSort);
+//        long finishSort = System.currentTimeMillis() - startSort;
+//        System.out.println(Arrays.toString(arr));
+//        System.out.println(finishSort);
 
     }
 
-    private static void bubbleSort(int[] arr) {
-        int len = arr.length;
+
+    private static void mergeSort(int[] arr) {
+        mergesort(arr, 0, arr.length - 1);
+    }
+
+    private static void mergesort(int[] arr, int low, int high) {
+        if (low < high) {
+            int middle = low + (high - low) / 2;
+            mergesort(arr, low, middle);
+            mergesort(arr, middle + 1, high);
+            int[] tempArr = new int[arr.length];
+
+            for (int i = low; i <= high; i++) {
+                tempArr[i] = arr[i];
+            }
+
+            int i = low;
+            int j = middle + 1;
+            int k = low;
+            while (i <= middle && j <= high) {
+                if (tempArr[i] <= tempArr[j]) {
+                    arr[k] = tempArr[i];
+                    i++;
+                } else {
+                    arr[k] = tempArr[j];
+                    j++;
+                }
+                k++;
+            }
+            while (i <= middle) {
+                arr[k] = tempArr[i];
+                k++;
+                i++;
+            }
+        }
+    }
+
+    private static int[] fillArray(int size) {
+        int[] arr = new int[size];
+        for (int i = 0; i < size; i++) {
+            arr[i] = new Random().nextInt(1000);
+        }
+        return arr;
+    }
+
+    private static int[] bubbleSort(int[] arr) {
+        int[] newArr = Arrays.copyOf(arr, arr.length);
+        int len = newArr.length;
         for (int j = 0; j < len; j++) {
             for (int i = 1; i < len - j; i++) {
-                if (arr[i] < arr[i - 1]) {
-                    int tmp = arr[i - 1];
-                    arr[i - 1] = arr[i];
-                    arr[i] = tmp;
+                if (newArr[i] < newArr[i - 1]) {
+                    int tmp = newArr[i - 1];
+                    newArr[i - 1] = newArr[i];
+                    newArr[i] = tmp;
                 }
             }
         }
+        return newArr;
     }
 
     private static void insertionSort(int[] arr) {
@@ -96,50 +143,5 @@ public class Task1_5 {
         if (lastValue > first) {
             sort(arr, first, lastValue);
         }
-    }
-
-
-    private static void mergeSort(int[] arr) {
-        mergesort(arr, 0, arr.length - 1);
-    }
-
-    private static void mergesort(int[] arr, int low, int high) {
-        if (low < high) {
-            int middle = low + (high - low) / 2;
-            mergesort(arr, low, middle);
-            mergesort(arr, middle + 1, high);
-            int[] tempArr = new int[arr.length];
-
-            for (int i = low; i <= high; i++) {
-                tempArr[i] = arr[i];
-            }
-
-            int i = low;
-            int j = middle + 1;
-            int k = low;
-            while (i <= middle && j <= high) {
-                if (tempArr[i] <= tempArr[j]) {
-                    arr[k] = tempArr[i];
-                    i++;
-                } else {
-                    arr[k] = tempArr[j];
-                    j++;
-                }
-                k++;
-            }
-            while (i <= middle) {
-                arr[k] = tempArr[i];
-                k++;
-                i++;
-            }
-        }
-    }
-
-    private static int[] fillArray(int size) {
-        int[] arr = new int[size];
-        for (int i = 0; i < size; i++) {
-            arr[i] = new Random().nextInt(1000);
-        }
-        return arr;
     }
 }

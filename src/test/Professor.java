@@ -1,3 +1,5 @@
+package test;
+
 public class Professor extends Person {
 
     Professor(String name, int age, String surname) {

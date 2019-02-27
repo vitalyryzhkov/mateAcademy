@@ -1,4 +1,4 @@
-package lesson02.task2_4;
+package lesson02.immutable;
 
 public final class Person {
     private final String name;

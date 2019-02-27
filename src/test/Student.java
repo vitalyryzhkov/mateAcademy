@@ -1,3 +1,5 @@
+package test;
+
 import java.util.Random;
 
 public class Student extends Person implements Presence {

@@ -6,7 +6,7 @@ public class TestFork {
     }
 
     private static void showInformation(String string) {
-        System.out.println(string + "successful! \n");
-
+        String s = "successful!";
+        System.out.println(string + s);
     }
 }

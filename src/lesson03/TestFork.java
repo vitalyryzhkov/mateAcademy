@@ -6,6 +6,6 @@ public class TestFork {
     }
 
     private static void showInformation(String string) {
-        System.out.println(string);
+        System.out.println(string + "successful!");
     }
 }

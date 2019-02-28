@@ -1,4 +1,4 @@
-package lesson03;
+package lesson03.branches;
 
 public class TestFork {
     public static void main(String[] args) {

@@ -5,7 +5,7 @@ public class TestFork {
         showInformation("Test fork git");
     }
 
-    public static void showInformation(String string) {
+    private static void showInformation(String string) {
         System.out.println(string);
     }
 }

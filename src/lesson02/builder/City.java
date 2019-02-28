@@ -20,10 +20,8 @@ public class City {
     }
 
     public class Builder {
-//        private City newCity;
 
         private Builder() {
-//            newCity = new City();
         }
 
         public Builder withName(String name) {

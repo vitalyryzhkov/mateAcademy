@@ -4,9 +4,10 @@ public class CarDoor {
     private boolean isDoorOpen;
     private boolean isWindowOpen;
 
+
     CarDoor() {
-        this.isDoorOpen = false;
-        this.isWindowOpen = false;
+        isDoorOpen = false;
+        isWindowOpen = false;
     }
 
     CarDoor(boolean isDoorOpen, boolean isWindowOpen) {
@@ -15,27 +16,27 @@ public class CarDoor {
     }
 
     void openDoor() {
-        this.isDoorOpen = true;
+        isDoorOpen = true;
     }
 
     void closeDoor() {
-        this.isDoorOpen = false;
+        isDoorOpen = false;
     }
 
     void openWindow() {
-        this.isWindowOpen = true;
+        isWindowOpen = true;
     }
 
     void closeWindow() {
-        this.isWindowOpen = false;
+        isWindowOpen = false;
     }
 
     void closeOrOpenDoor() {
-        this.isDoorOpen = !this.isDoorOpen;
+        isDoorOpen = !isDoorOpen;
     }
 
     void closeOrOpenWindow() {
-        this.isWindowOpen = !this.isWindowOpen;
+        isWindowOpen = !isWindowOpen;
     }
 
     @Override

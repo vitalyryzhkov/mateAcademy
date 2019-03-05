@@ -17,23 +17,22 @@ public class MyLinkedList<T> implements List<T> {
     }
 
     @Override
-    public void add(T t) {
+    public void add(T item) {
         Node<T> currentNode = first;
         if (currentNode == null) {
             Node<T> last = this.last;
-            Node<T> newNode = new Node<>(last, t, null);
+            Node<T> newNode = new Node<>(last, item, null);
             this.last = newNode;
             if (last == null)
                 currentNode = newNode;
             else
                 last.next = newNode;
-            size++;
         } else {
-            Node<T> newNode = new Node<>(currentNode.prev, t, currentNode.next);
+            Node<T> newNode = new Node<>(currentNode.prev, item, currentNode.next);
             currentNode.prev = newNode;
             currentNode.prev.next = newNode;
-            size++;
         }
+        size++;
     }
 
     @Override
@@ -71,10 +70,10 @@ public class MyLinkedList<T> implements List<T> {
             x.prev = null;
             x = next;
         }
-        first = last = null;
+        first = null;
+        last = null;
         size = 0;
     }
-
 
     Node<T> node(int index) {
         if (index < (size() / 2)) {
@@ -92,7 +91,7 @@ public class MyLinkedList<T> implements List<T> {
         }
     }
 
-    static class Node<E> {
+    private static class Node<E> {
         E item;
         Node<E> next;
         Node<E> prev;

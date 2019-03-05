@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class MyArrayList<T> implements List<T> {
     private static final int DEFAULT_SIZE = 10;
     private Object[] array;
+    private int counter = 0;
 
     MyArrayList() {
         array = new Object[DEFAULT_SIZE];
@@ -16,20 +17,21 @@ public class MyArrayList<T> implements List<T> {
     }
 
     @Override
-    public T get(int i) {
-        if (i >= size() || i < 0) {
+    public T get(int index) {
+        if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException("Enter correct index from " + 0 + " to " + (size() - 1));
         }
-        return (T) array[i];
+        return (T) array[index];
     }
 
     @Override
-    public void add(T t) {
+    public void add(T item) {
         for (int i = 0; i < array.length; i++) {
             if (array[array.length - 1] != null) {
                 arrayPlus(array);
             } else if (array[i] == null) {
-                array[i] = t;
+                array[i] = item;
+                counter++;
                 break;
             }
         }
@@ -42,16 +44,16 @@ public class MyArrayList<T> implements List<T> {
     }
 
     @Override
-    public void remove(int i) {
-        if (array.length - 1 - i >= 0) {
-            System.arraycopy(array, i + 1, array, i, array.length - 1 - i);
+    public void remove(int index) {
+        if (array.length - 1 - index >= 0) {
+            System.arraycopy(array, index + 1, array, index, array.length - 1 - index);
         }
         array[array.length - 1] = null;
     }
 
     @Override
     public int size() {
-        return array.length;
+        return counter;
     }
 
     @Override

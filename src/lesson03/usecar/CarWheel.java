@@ -7,15 +7,15 @@ public class CarWheel {
         this.stateWheel = stateWheel;
     }
 
-    public void newWheel() {
-        this.stateWheel = 1.0;
+    void newWheel() {
+        stateWheel = 1.0;
     }
 
     public void wipeOffWheel(double wipePercent) {
-        this.stateWheel = stateWheel - (wipePercent / 100 * wipePercent);
+        stateWheel = stateWheel - (wipePercent / 100 * wipePercent);
     }
 
-    public double getStateWheel() {
+    double getStateWheel() {
         return stateWheel;
     }
 

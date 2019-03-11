@@ -1,24 +1,18 @@
 package lesson05;
 
-public class RealCalculator {
+class RealCalculator {
+    Calculator<Double, Character> calculator = (Double a, Double b, Character c) ->
 
-    public static void main(String[] args) {
-        Calculator<Double, Character> calculator = (Double a, Double b, Character c) ->
             c == ('+') ? (a + b) :
                     c == ('*') ? a * b :
                             c == ('/') ? a / b :
                                     c == ('-') ? (a - b) :
                                             c == ('v') ? Math.pow(a, 1 / b) :
                                                     c == ('^') ? Math.pow(a, b) :
-                                                            c == ('&') ? Math.pow((a + b) / a + 117, b) : new Double("There is no such operator");
+                                                            c == ('&') ? Math.pow((a + b) / a + 117, b) : customException();
 
-        System.out.println(calculator.calculate(2., 3., ')') + "\n" +
-                calculator.calculate(2., 3., '+') + "\n" +
-                calculator.calculate(2., 3., '*') + "\n" +
-                calculator.calculate(2., 3., '/') + "\n" +
-                calculator.calculate(2., 3., '-') + "\n" +
-                calculator.calculate(2., 3., 'v') + "\n" +
-                calculator.calculate(2., 3., '^') + "\n" +
-                calculator.calculate(2., 3., '&'));
+    private static double customException() throws CustomException {
+        throw new CustomException();
     }
 }
+

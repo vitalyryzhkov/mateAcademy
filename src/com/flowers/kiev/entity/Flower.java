@@ -1,13 +1,13 @@
-package lesson06;
+package com.flowers.kiev.entity;
 
-abstract class Flower {
+public abstract class Flower {
     private int price;
 
     public Flower() {
 
     }
 
-    Flower(int price) {
+    public Flower(int price) {
         this.price = price;
     }
 

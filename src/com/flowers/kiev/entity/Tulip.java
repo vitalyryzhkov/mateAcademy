@@ -1,7 +1,7 @@
-package lesson06;
+package com.flowers.kiev.entity;
 
-class Tulip extends Flower {
-    Tulip(int price) {
+public class Tulip extends Flower {
+    public Tulip(int price) {
         super(price);
     }
 

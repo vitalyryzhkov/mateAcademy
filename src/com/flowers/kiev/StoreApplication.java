@@ -1,8 +1,10 @@
-package lesson06;
+package com.flowers.kiev;
+
+import com.flowers.kiev.service.FlowerStore;
 
 import java.util.Arrays;
 
-public class StoreInit {
+public class StoreApplication {
     public static void main(String[] args) {
         FlowerStore flowerStore = new FlowerStore();
 

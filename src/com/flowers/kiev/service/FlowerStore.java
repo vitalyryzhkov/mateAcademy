@@ -1,13 +1,18 @@
-package lesson06;
+package com.flowers.kiev.service;
+
+import com.flowers.kiev.entity.Daisy;
+import com.flowers.kiev.entity.Flower;
+import com.flowers.kiev.entity.Rose;
+import com.flowers.kiev.entity.Tulip;
 
 import java.util.ArrayList;
 import java.util.stream.Stream;
 
-class FlowerStore {
+public class FlowerStore {
 
     private static int cashBox = 0;
 
-    Flower[] sell(int rose, int daisy, int tulip) {
+    public Flower[] sell(int rose, int daisy, int tulip) {
         Stream<Rose> roseStream = Stream.generate(() -> new Rose(100)).limit(rose);
         Stream<Daisy> daisyStream = Stream.generate(() -> new Daisy(70)).limit(daisy);
         Stream<Tulip> tulipStream = Stream.generate(() -> new Tulip(45)).limit(tulip);
@@ -17,7 +22,7 @@ class FlowerStore {
         return bouquet.toArray(Flower[]::new);
     }
 
-    Flower[] sellSequence(int rose, int daisy, int tulip) {
+    public Flower[] sellSequence(int rose, int daisy, int tulip) {
         ArrayList<Flower> flowers = new ArrayList<>();
 
         int bouquetSize = rose + daisy + tulip;
@@ -43,7 +48,7 @@ class FlowerStore {
         return flowers.toArray(new Flower[bouquetSize]);
     }
 
-    int getCashBox() {
+    public int getCashBox() {
         return cashBox;
     }
 }

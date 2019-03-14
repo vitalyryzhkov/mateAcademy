@@ -11,10 +11,14 @@ import java.util.stream.Stream;
 public class FlowerStore {
 
     private static int cashBox = 0;
+    private Rose rose = new Rose(100);
+    private Tulip tulip = new Tulip(45);
+    private Daisy daisy = new Daisy(70);
+
 
     public Flower[] sell(int rose, int daisy, int tulip) {
 
-        Stream<Rose> roseStream = Stream.generate(() -> new Rose()).limit(rose);
+        Stream<Rose> roseStream = Stream.generate(() -> new Rose(100)).limit(rose);
         Stream<Daisy> daisyStream = Stream.generate(() -> new Daisy(70)).limit(daisy);
         Stream<Tulip> tulipStream = Stream.generate(() -> new Tulip(45)).limit(tulip);
         Stream<Flower> firstBouquet = Stream.concat(roseStream, daisyStream);
@@ -30,22 +34,19 @@ public class FlowerStore {
 
         for (int i = 0; i < maxFlowers; i++) {
             if (rose > 0) {
-                Rose rose1 = new Rose(100);
-                flowers.add(rose1);
+                flowers.add(this.rose);
                 rose--;
-                cashBox += rose1.getPrice();
+                cashBox += this.rose.getPrice();
             }
             if (daisy > 0) {
-                Daisy daisy1 = new Daisy(70);
-                flowers.add(daisy1);
+                flowers.add(this.daisy);
                 daisy--;
-                cashBox += daisy1.getPrice();
+                cashBox += this.daisy.getPrice();
             }
             if (tulip > 0) {
-                Tulip tulip1 = new Tulip(45);
-                flowers.add(tulip1);
+                flowers.add(this.tulip);
                 tulip--;
-                cashBox += tulip1.getPrice();
+                cashBox += this.tulip.getPrice();
             }
         }
 

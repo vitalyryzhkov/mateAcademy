@@ -13,12 +13,12 @@ public class FlowerStore {
     private static int cashBox = 0;
 
     public Flower[] sell(int rose, int daisy, int tulip) {
-        Stream<Rose> roseStream = Stream.generate(() -> new Rose(100)).limit(rose);
+
+        Stream<Rose> roseStream = Stream.generate(() -> new Rose()).limit(rose);
         Stream<Daisy> daisyStream = Stream.generate(() -> new Daisy(70)).limit(daisy);
         Stream<Tulip> tulipStream = Stream.generate(() -> new Tulip(45)).limit(tulip);
         Stream<Flower> firstBouquet = Stream.concat(roseStream, daisyStream);
         Stream<Flower> bouquet = Stream.concat(firstBouquet, tulipStream);
-
         return bouquet.toArray(Flower[]::new);
     }
 
@@ -26,22 +26,26 @@ public class FlowerStore {
         ArrayList<Flower> flowers = new ArrayList<>();
 
         int bouquetSize = rose + daisy + tulip;
+        int maxFlowers = Math.max(rose, daisy > tulip ? daisy : tulip);
 
-        for (int i = 0; i < bouquetSize; i++) {
+        for (int i = 0; i < maxFlowers; i++) {
             if (rose > 0) {
-                flowers.add(new Rose(100));
+                Rose rose1 = new Rose(100);
+                flowers.add(rose1);
                 rose--;
-                cashBox += 100;
+                cashBox += rose1.getPrice();
             }
             if (daisy > 0) {
-                flowers.add(new Daisy(70));
+                Daisy daisy1 = new Daisy(70);
+                flowers.add(daisy1);
                 daisy--;
-                cashBox += 70;
+                cashBox += daisy1.getPrice();
             }
             if (tulip > 0) {
-                flowers.add(new Tulip(45));
+                Tulip tulip1 = new Tulip(45);
+                flowers.add(tulip1);
                 tulip--;
-                cashBox += 45;
+                cashBox += tulip1.getPrice();
             }
         }
 

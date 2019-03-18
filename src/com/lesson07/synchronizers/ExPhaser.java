@@ -65,10 +65,8 @@ public class ExPhaser {
                 System.out.println(" " + this + " ");
                 while (PHASER.getPhase() < destination)
                     PHASER.arriveAndAwaitAdvance();
-                //----------------------------------------------
                 Thread.sleep(500);
                 System.out.println(" " + this + " exit");
-                // Отмена регистрации
                 PHASER.arriveAndDeregister();
             } catch (InterruptedException e) {
                 e.printStackTrace();

@@ -10,17 +10,14 @@ public class CopyOnWrite extends Thread {
         list.add("D");
     }
 
-    public static void main(String[] args)
-            throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException {
         list.add("A");
         list.add("B");
         list.add("C");
 
-        CopyOnWrite copyOnWrite = new CopyOnWrite();
-        copyOnWrite.run();
+        new CopyOnWrite().start();
 
         Thread.sleep(1000);
-
         list.forEach(System.out::println);
         Thread.sleep(1000);
         System.out.println(list);

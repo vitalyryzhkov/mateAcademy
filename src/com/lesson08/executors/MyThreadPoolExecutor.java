@@ -1,15 +1,16 @@
 package com.lesson08.executors;
 
-import java.util.concurrent.*;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.stream.IntStream;
 
 public class MyThreadPoolExecutor {
     public static void main(String[] args) {
 
-        ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
+        ThreadPoolExecutor poolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(2);
 
-        IntStream.range(0, 10).mapToObj(TpeRequest::new).forEachOrdered(executor::submit);
-        executor.shutdown();
+        IntStream.range(0, 10).mapToObj(TpeRequest::new).forEachOrdered(poolExecutor::submit);
+        poolExecutor.shutdown();
     }
 
     static class TpeRequest implements Runnable {
